@@ -1,0 +1,9 @@
+# idea
+.idea
+
+# composer
+vendor
+composer.lock
+
+# log
+*.log
