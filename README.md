@@ -20,78 +20,13 @@ other zero value  `new className()`
 
 composer require yanlongli/zero-value
 
-```php
-use ZeroValue\ZeroValue;
 
-class ExampleD extends ZeroValue
-{
-    //todo 
-}
-```
+## update log:
 
-## Example Demo 演示示例
-```php
-
-use ZeroValue\ZeroValue;include "src/ZeroValue.php";
-class ExampleA
-{
-    public $a;
-}
-
-class ExampleB
-{
-    public int $a;
-}
-
-class ExampleC
-{
-    public int $a = 0;
-}
-
-class ExampleD extends ZeroValue
-{
-    public int $a;
-}
-
-// No prompt exception PHP < 7.4  Writing style
-$ea = new ExampleA();
-var_dump($ea->a);
-
-// 7.4 Writing style   Fatal error: Uncaught Error: Typed property ExampleB::$a must not be accessed before initialization in example.php on line 35
-$eb = new ExampleB();
-var_dump($eb->a);
-
-// No prompt exception  7.4  Initialization Writing style
-$ec = new ExampleC();
-var_dump($ec->a);
-
-// Automatic zero reflection injection 
-$ed = new ExampleD();
-var_dump($ed->a);
-
-```
-
-## Matters needing attention  注意事项
-PHP is an interpreted language. There is no mandatory rule that classes cannot refer to each other, but you should avoid this problem. For example, class A contains class B, and class B contains class A
-
-PHP 是解释语言，没有强制规定类不能相互引用，但你应该避免这个问题。如：class A 含有 class B ，class B 含有 class A.
-```php
-// 这是应该避免 This should be avoided
-class A {
-    public B $b;
-}
-class B {
-    public A $a;
-}
-
-// 这是应该避免 This should be avoided
-class C {
-    public D $d;
-}
-class D {
-    public E $e;
-}
-class E {
-    public C $c;
-}
-```
+    2020年1月21日~22日
+        修复零值初始化属性类时，构造函数需要参数问题
+        增加扫描工具，扫描未定义的类
+    
+    January 21-22, 2020
+         Fix constructor requires parameter when zero-value initialized property class
+         Add scan tools to scan undefined classes
